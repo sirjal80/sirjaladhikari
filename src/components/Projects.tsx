@@ -83,16 +83,22 @@ const Projects = () => {
                     size="sm" 
                     variant="outline" 
                     className="gap-2 flex-1"
+                    asChild
                   >
-                    <Github className="w-4 h-4" />
-                    Code
+                    <a href="https://github.com/sirjal80" target="_blank" rel="noopener noreferrer">
+                      <Github className="w-4 h-4" />
+                      Code
+                    </a>
                   </Button>
                   <Button 
                     size="sm" 
                     className="gap-2 flex-1"
+                    asChild
                   >
-                    <ExternalLink className="w-4 h-4" />
-                    View
+                    <a href="https://www.youtube.com/@sirjaladhikari" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4" />
+                      View
+                    </a>
                   </Button>
                 </div>
               </div>

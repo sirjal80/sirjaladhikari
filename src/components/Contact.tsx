@@ -4,14 +4,45 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, Github, Linkedin, Instagram, MapPin, Send } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useState } from "react";
 
 const Contact = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    });
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const message = formData.get("message") as string;
+
+    try {
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: { name, email, message },
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thanks for reaching out. I'll get back to you soon!",
+      });
+
+      // Reset form
+      e.currentTarget.reset();
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or email me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -77,6 +108,7 @@ const Contact = () => {
                 </label>
                 <Input 
                   id="name"
+                  name="name"
                   placeholder="Your name" 
                   required 
                   className="bg-background/50"
@@ -89,6 +121,7 @@ const Contact = () => {
                 </label>
                 <Input 
                   id="email"
+                  name="email"
                   type="email" 
                   placeholder="your.email@example.com" 
                   required 
@@ -102,15 +135,16 @@ const Contact = () => {
                 </label>
                 <Textarea 
                   id="message"
+                  name="message"
                   placeholder="Tell me about your project..." 
                   required 
                   className="min-h-[150px] bg-background/50"
                 />
               </div>
 
-              <Button type="submit" className="w-full gap-2 glow">
+              <Button type="submit" className="w-full gap-2 glow" disabled={isSubmitting}>
                 <Send className="w-4 h-4" />
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </Card>

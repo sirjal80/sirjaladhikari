@@ -18,6 +18,15 @@ const Hero = () => {
       {/* Content */}
       <div className="container relative z-10 px-4 py-20">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
+          {/* Profile Photo */}
+          <div className="flex justify-center mb-8">
+            <img 
+              src="https://i.postimg.cc/13pr7hzb/temp-Image-P7non-E.avif" 
+              alt="Sirjal Adhikari" 
+              className="w-48 h-48 rounded-full object-cover border-4 border-primary glow"
+            />
+          </div>
+          
           <div className="space-y-4">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
               Hi, I'm <span className="text-gradient">Sirjal Adhikari</span>
@@ -33,13 +42,26 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center items-center pt-4">
-            <Button size="lg" className="gap-2 glow group">
-              View My Work 
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <Button 
+              size="lg" 
+              className="gap-2 glow group"
+              asChild
+            >
+              <a href="https://www.youtube.com/@sirjaladhikari" target="_blank" rel="noopener noreferrer">
+                View My Work 
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
-            <Button size="lg" variant="outline" className="gap-2">
-              <Mail className="w-4 h-4" />
-              Contact Me
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="gap-2"
+              asChild
+            >
+              <a href="#contact">
+                <Mail className="w-4 h-4" />
+                Contact Me
+              </a>
             </Button>
           </div>
 
