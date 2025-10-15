@@ -4,9 +4,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, Github, Linkedin, Instagram, MapPin, Send } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 import { useState } from "react";
 import { z } from "zod";
+import emailjs from "@emailjs/browser";
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -37,11 +37,16 @@ const Contact = () => {
     }
 
     try {
-      const { error } = await supabase.functions.invoke("send-contact-email", {
-        body: { name, email, message },
-      });
-
-      if (error) throw error;
+      await emailjs.send(
+        'service_bl9glnn',
+        'template_gy4hy8h',
+        {
+          from_name: name,
+          from_email: email,
+          message: message,
+        },
+        'kqTNiDtfF3YlmPgsg'
+      );
 
       toast({
         title: "Success",
