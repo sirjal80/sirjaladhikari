@@ -6,10 +6,15 @@ import { Mail, Phone, Github, Linkedin, Instagram, MapPin, Send } from "lucide-r
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useState } from "react";
-
+import { z } from "zod";
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const contactSchema = z.object({
+    name: z.string().trim().nonempty({ message: "Name cannot be empty" }).max(100),
+    email: z.string().trim().email({ message: "Invalid email address" }).max(255),
+    message: z.string().trim().nonempty({ message: "Message cannot be empty" }).max(1000),
+  });
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -19,6 +24,18 @@ const Contact = () => {
     const email = formData.get("email") as string;
     const message = formData.get("message") as string;
 
+    const result = contactSchema.safeParse({ name, email, message });
+    if (!result.success) {
+      const firstError = result.error.issues[0]?.message || "Please check your inputs.";
+      toast({
+        title: "Validation error",
+        description: firstError,
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const { error } = await supabase.functions.invoke("send-contact-email", {
         body: { name, email, message },
@@ -27,8 +44,8 @@ const Contact = () => {
       if (error) throw error;
 
       toast({
-        title: "Message Sent Successfully!",
-        description: "Thanks for reaching out. I'll get back to you soon!",
+        title: "Success",
+        description: "Thank you! Your message has been sent successfully.",
       });
 
       // Reset form

@@ -11,6 +11,8 @@ const Projects = () => {
       description: "Python-based voice assistant with speech recognition and natural language processing capabilities. Built in Class 9 as an early exploration into AI technology.",
       tech: ["Python", "Speech Recognition", "NLP"],
       color: "from-primary to-secondary",
+      codeHref: "https://github.com/sirjal80",
+      viewHref: "https://www.youtube.com/@sirjaladhikari",
     },
     {
       icon: Gamepad2,
@@ -19,6 +21,8 @@ const Projects = () => {
       description: "Award-winning game developed for Day Dream Butwal 2025. Features innovative gameplay mechanics and polished user experience.",
       tech: ["Unity", "C#", "Game Design"],
       color: "from-accent to-primary",
+      codeHref: "https://github.com/sirjal80",
+      viewHref: "https://www.youtube.com/@sirjaladhikari",
     },
     {
       icon: Globe,
@@ -27,6 +31,28 @@ const Projects = () => {
       description: "Responsive website with advanced SEO optimization for local businesses. Improved search rankings and user engagement significantly.",
       tech: ["HTML/CSS", "SEO", "Analytics"],
       color: "from-secondary to-accent",
+      codeHref: "https://github.com/sirjal80",
+      viewHref: "https://www.youtube.com/@sirjaladhikari",
+    },
+    {
+      icon: Globe,
+      title: "Bolt Hackathon Project",
+      category: "Web Project",
+      description: "Project built for the Bolt Hackathon.",
+      tech: ["Web", "Hackathon"],
+      color: "from-primary to-secondary",
+      viewHref: "https://sirjaladhikari.netlify.app/",
+      codeHref: "https://github.com/sirjal80",
+    },
+    {
+      icon: Globe,
+      title: "NASA Space Apps: Code4Earth",
+      category: "Competition",
+      description: "Code4Earth project for the NASA Space Apps Challenge.",
+      tech: ["Web", "Challenge"],
+      color: "from-secondary to-accent",
+      viewHref: "https://code4earth.study/",
+      codeHref: "https://github.com/sirjal80",
     },
   ];
 
@@ -85,7 +111,7 @@ const Projects = () => {
                     className="gap-2 flex-1"
                     asChild
                   >
-                    <a href="https://github.com/sirjal80" target="_blank" rel="noopener noreferrer">
+                    <a href={project.codeHref ?? "https://github.com/sirjal80"} target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4" />
                       Code
                     </a>
@@ -95,7 +121,7 @@ const Projects = () => {
                     className="gap-2 flex-1"
                     asChild
                   >
-                    <a href="https://www.youtube.com/@sirjaladhikari" target="_blank" rel="noopener noreferrer">
+                    <a href={project.viewHref ?? "https://www.youtube.com/@sirjaladhikari"} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-4 h-4" />
                       View
                     </a>

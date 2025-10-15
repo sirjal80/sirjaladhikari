@@ -23,6 +23,22 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { name, email, message }: ContactEmailRequest = await req.json();
 
+    // Validate input
+    const errors: string[] = [];
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!name || typeof name !== "string" || name.trim().length === 0 || name.length > 100) errors.push("Invalid name");
+    if (!email || typeof email !== "string" || !emailRegex.test(email) || email.length > 255) errors.push("Invalid email");
+    if (!message || typeof message !== "string" || message.trim().length === 0 || message.length > 1000) errors.push("Invalid message");
+    if (errors.length) {
+      return new Response(JSON.stringify({ error: errors.join(", ") }), {
+        status: 400,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+
+    const escapeHtml = (s: string) =>
+      s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
     console.log("Sending contact form email from:", email);
 
     // Send email via Resend API
@@ -34,15 +50,15 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "Portfolio Contact <onboarding@resend.dev>",
-        to: ["sirjaladhikari80@gmail.com"],
+        to: [Deno.env.get("CONTACT_TO_EMAIL") || "sirjaladhikari80@gmail.com"],
         reply_to: email,
         subject: `New Portfolio Contact from ${name}`,
         html: `
           <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
           <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, '<br>')}</p>
+          <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
         `,
       }),
     });
