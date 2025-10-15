@@ -17,6 +17,7 @@ const Contact = () => {
   });
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
@@ -37,7 +38,7 @@ const Contact = () => {
     }
 
     try {
-      await emailjs.send(
+      const res: any = await emailjs.send(
         'service_bl9glnn',
         'template_gy4hy8h',
         {
@@ -47,20 +48,25 @@ const Contact = () => {
         },
         'kqTNiDtfF3YlmPgsg'
       );
+      console.log('EmailJS response:', res);
+
+      if (!res || res.status !== 200) {
+        throw new Error(res?.text || 'Email service did not return 200');
+      }
 
       toast({
-        title: "Success",
-        description: "Thank you! Your message has been sent successfully.",
+        title: 'Success',
+        description: 'Message sent successfully!',
       });
 
       // Reset form
       e.currentTarget.reset();
-    } catch (error) {
-      console.error("Error sending email:", error);
+    } catch (error: any) {
+      console.error('Error sending email:', error);
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try again or email me directly.",
-        variant: "destructive",
+        title: 'Error',
+        description: error?.message || 'Failed to send message. Please try again or email me directly.',
+        variant: 'destructive',
       });
     } finally {
       setIsSubmitting(false);
