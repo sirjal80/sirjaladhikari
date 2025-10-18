@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, Github, Linkedin, Instagram, MapPin, Send } from "lucide-react";
+import { Mail, Phone, Github, Linkedin, Instagram, MapPin, Send, Twitter } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { z } from "zod";
@@ -111,6 +111,12 @@ const Contact = () => {
       label: "Instagram",
       href: "https://instagram.com/sirjal.adhikari",
       username: "@sirjal.adhikari",
+    },
+    {
+      icon: Twitter,
+      label: "X (Twitter)",
+      href: "https://x.com/sirjal32",
+      username: "@sirjal32",
     },
   ];
 
