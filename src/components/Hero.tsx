@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, Linkedin, Instagram, Mail } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Instagram, Mail, Camera } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
@@ -61,6 +61,17 @@ const Hero = () => {
               <a href="#contact">
                 <Mail className="w-4 h-4" />
                 Contact Me
+              </a>
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="gap-2"
+              asChild
+            >
+              <a href="#photos">
+                <Camera className="w-4 h-4" />
+                Photos
               </a>
             </Button>
           </div>
