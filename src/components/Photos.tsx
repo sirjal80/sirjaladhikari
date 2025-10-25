@@ -16,6 +16,15 @@ import seoCertificate from "@/assets/photos/seo-certificate.jpg";
 import friendsGroup from "@/assets/photos/friends-group.jpg";
 import cProgrammingCert from "@/assets/photos/c-programming-certificate.jpg";
 import codingOlympiad from "@/assets/photos/coding-olympiad-medal.jpg";
+import simplemAiCert from "@/assets/photos/simplem-ai-certificate.jpg";
+import introSeoCert from "@/assets/photos/intro-seo-certificate.jpg";
+import pythonBeginnersCert from "@/assets/photos/python-beginners-certificate.jpg";
+import simplilearnCompletionCert from "@/assets/photos/simplilearn-completion-certificate.jpg";
+import ictClubHorizonsCert from "@/assets/photos/ict-club-horizons-certificate.jpg";
+import awardCeremonyReceiving from "@/assets/photos/award-ceremony-receiving.jpg";
+import awardCeremonyTeam from "@/assets/photos/award-ceremony-team.jpg";
+import codingOlympiadAwards from "@/assets/photos/coding-olympiad-awards.jpg";
+import nasaSpaceAppsSetup from "@/assets/photos/nasa-space-apps-setup.jpg";
 
 const Photos = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -34,6 +43,15 @@ const Photos = () => {
     { src: certificate5, alt: "Certificate of Completion" },
     { src: cProgrammingCert, alt: "C Programming Basics Certificate" },
     { src: seoCertificate, alt: "SEO Fundamentals Training Certificate" },
+    { src: simplemAiCert, alt: "SIMPLEM AI Innovation Challenge Certificate" },
+    { src: introSeoCert, alt: "Introduction to SEO Certificate - SimpliLearn" },
+    { src: pythonBeginnersCert, alt: "Python for Beginners Certificate - Great Learning" },
+    { src: simplilearnCompletionCert, alt: "Certificate of Completion - SimpliLearn SkillUP" },
+    { src: ictClubHorizonsCert, alt: "ICT Club of Horizons Coding Olympiad Certificate" },
+    { src: awardCeremonyReceiving, alt: "Award Ceremony - Receiving Recognition" },
+    { src: awardCeremonyTeam, alt: "Award Ceremony - Team Photo with Trophy" },
+    { src: codingOlympiadAwards, alt: "District Level Coding Olympiad Winner - Certificates and Awards" },
+    { src: nasaSpaceAppsSetup, alt: "NASA Space Apps Challenge Setup with Telescope" },
   ];
 
   return (
