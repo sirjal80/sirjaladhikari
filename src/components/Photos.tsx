@@ -13,6 +13,9 @@ import certificate3 from "@/assets/photos/certificate-3.jpg";
 import certificate4 from "@/assets/photos/certificate-4.jpg";
 import certificate5 from "@/assets/photos/certificate-5.jpg";
 import seoCertificate from "@/assets/photos/seo-certificate.jpg";
+import friendsGroup from "@/assets/photos/friends-group.jpg";
+import cProgrammingCert from "@/assets/photos/c-programming-certificate.jpg";
+import codingOlympiad from "@/assets/photos/coding-olympiad-medal.jpg";
 
 const Photos = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -22,11 +25,14 @@ const Photos = () => {
     { src: nasaSpaceApps, alt: "NASA Space Apps Challenge Participant Badge" },
     { src: daydreamButwal, alt: "DayDream Butwal 2025 Event Badge" },
     { src: telescopeOutdoor, alt: "Stargazing with Telescope" },
+    { src: friendsGroup, alt: "Friends and Teammates" },
+    { src: codingOlympiad, alt: "Inter School Coding Olympiad Medal - Rupandehi District" },
     { src: certificate1, alt: "New Horizon English Boarding Certificate" },
     { src: certificate2, alt: "Great Learning Certificate of Completion" },
     { src: certificate3, alt: "Certificate of Completion" },
     { src: certificate4, alt: "Certificate of Completion" },
     { src: certificate5, alt: "Certificate of Completion" },
+    { src: cProgrammingCert, alt: "C Programming Basics Certificate" },
     { src: seoCertificate, alt: "SEO Fundamentals Training Certificate" },
   ];
 
