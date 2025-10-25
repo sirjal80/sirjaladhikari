@@ -12,7 +12,7 @@ const Projects = () => {
       tech: ["Python", "Speech Recognition", "NLP"],
       color: "from-primary to-secondary",
       codeHref: "https://github.com/sirjal80",
-      viewHref: "https://www.youtube.com/@sirjaladhikari",
+      viewHref: "https://youtu.be/MgeSx_0g_EQ",
     },
     {
       icon: Gamepad2,
@@ -22,7 +22,7 @@ const Projects = () => {
       tech: ["Unity", "C#", "Game Design"],
       color: "from-accent to-primary",
       codeHref: "https://github.com/sirjal80",
-      viewHref: "https://www.youtube.com/@sirjaladhikari",
+      viewHref: "https://codejal.itch.io/impossble-e5cape",
     },
     {
       icon: Globe,
