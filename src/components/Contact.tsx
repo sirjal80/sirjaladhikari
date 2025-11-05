@@ -59,8 +59,11 @@ const Contact = () => {
         description: 'Message sent successfully!',
       });
 
-      // Reset form
-      e.currentTarget.reset();
+      // Reset form safely
+      const form = e.currentTarget;
+      if (form) {
+        form.reset();
+      }
     } catch (error: any) {
       console.error('Error sending email:', error);
       toast({
