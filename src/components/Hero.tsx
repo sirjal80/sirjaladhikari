@@ -31,9 +31,6 @@ const Hero = () => {
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
               Hi, I'm <span className="text-gradient">Sirjal Adhikari</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-light">
-              Future Tech Innovator | Aspiring Developer | Passionate Learner
-            </p>
           </div>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
