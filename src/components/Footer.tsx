@@ -1,8 +1,6 @@
-import { Github, Linkedin, Instagram, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail } from "lucide-react";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="py-12 px-4 border-t border-border/50">
       <div className="container max-w-6xl mx-auto">
@@ -72,9 +70,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border/50 text-center text-muted-foreground">
           <p className="flex items-center justify-center gap-2 flex-wrap">
-            © {currentYear} Sirjal Adhikari. Built with
-            <Heart className="w-4 h-4 text-primary" />
-            and passion for technology.
+            © 2025 Sirjal Adhikari. Built with ♡ and passion for technology.
           </p>
         </div>
       </div>

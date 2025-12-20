@@ -2,12 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Design tokens: light (default) and dark (class-based) themes.
+   Colors are HSL triplets to be consumed by Tailwind's HSL variables.
 */
 
 @layer base {
   :root {
+    /* Light theme (default) */
+    --background: 210 20% 98%;         /* off-white */
+    --foreground: 220 14% 10%;         /* deep near-black */
+
+    --card: 210 20% 100%;              /* white */
+    --card-foreground: 220 14% 10%;    /* near-black */
+
+    --popover: 210 20% 100%;
+    --popover-foreground: 220 14% 10%;
+
+    /* Primary = deep neutral used for strong elements (headers, CTA backgrounds) */
+    --primary: 220 14% 8%;             /* deep navy / near-black */
+    --primary-foreground: 210 40% 98%; /* light text */
+
+    /* Accent = premium electric blue / teal */
+    --accent: 205 90% 52%;             /* electric blue/teal */
+    --accent-foreground: 210 40% 98%;
+
+    --secondary: 210 16% 30%;          /* muted cool gray */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 12% 92%;              /* subtle muted surface for light theme */
+    --muted-foreground: 220 12% 40%;
+
+    --destructive: 0 85% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders, inputs, focus ring */
+    --border: 215 14% 90%;
+    --input: 215 14% 95%;
+    --ring: 205 90% 50%;
+
+    --radius: 0.5rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(220 14% 8%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(205 90% 40%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 6px 20px -6px hsl(220 14% 8% / 0.08);
+    --shadow-card: 0 8px 30px -12px hsl(220 14% 8% / 0.08);
+
+    --transition-smooth: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Dark theme overrides (class based per Tailwind config) */
+  .dark {
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
@@ -17,8 +64,11 @@ All colors MUST be HSL.
     --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 220 14% 8%;
+    --primary-foreground: 210 40% 98%;
+
+    --accent: 205 90% 52%;
+    --accent-foreground: 210 40% 98%;
 
     --secondary: 188 94% 43%;
     --secondary-foreground: 222 47% 11%;
@@ -26,72 +76,118 @@ All colors MUST be HSL.
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 271 91% 65%;
-    --accent-foreground: 210 40% 98%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217 33% 25%;
     --input: 217 33% 20%;
-    --ring: 217 91% 60%;
+    --ring: 205 90% 52%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(188 94% 43%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(271 91% 65%) 0%, hsl(217 91% 60%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(222 47% 11%) 0%, hsl(217 33% 17%) 100%);
-    
-    /* Shadows */
-    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.3);
-    --shadow-glow-secondary: 0 0 40px hsl(188 94% 43% / 0.3);
-    --shadow-card: 0 10px 40px -10px hsl(217 91% 60% / 0.2);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-primary: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(220 14% 8%) 100%);
+    --shadow-soft: 0 8px 30px -12px hsl(205 90% 52% / 0.06);
+    --shadow-card: 0 10px 40px -10px hsl(220 14% 8% / 0.25);
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+  /* Global element defaults and typographic scale */
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background: linear-gradient(180deg, hsl(222 47% 11%) 0%, hsl(217 33% 15%) 100%);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    line-height: 1.6;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* Headings: stronger hierarchy for portfolio content */
+  h1 {
+    font-weight: 700;
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: hsl(var(--foreground));
+    margin: 0 0 0.6rem 0;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem 0;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    margin: 0 0 0.4rem 0;
+  }
+
+  p, li { color: hsl(var(--foreground)); }
+
+  small, .muted { color: hsl(var(--muted-foreground)); font-size: 0.9rem; }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md font-semibold;
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--radius);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: hsl(var(--accent));
+    border-color: hsl(var(--border));
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px hsl(var(--ring) / 0.12);
+  }
+
+  /* Link styling */
+  a {
+    color: hsl(var(--accent));
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+  }
+
+  a:hover { text-decoration: underline; opacity: 0.92; }
+
+  /* Section spacing & subtle separators for visual hierarchy */
+  section { padding: 3.2rem 0; }
+  header, footer { padding: 2rem 0; }
+
+  /* Cards and surface */
+  .card {
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-primary);
-  }
-
-  .text-gradient-accent {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-accent);
-  }
-
-  .glow {
-    box-shadow: var(--shadow-glow);
-  }
-
-  .glow-secondary {
-    box-shadow: var(--shadow-glow-secondary);
-  }
-
-  .card-glow {
-    box-shadow: var(--shadow-card);
-  }
-
-  .glass {
-    @apply bg-card/50 backdrop-blur-lg border border-border/50;
-  }
+  .text-gradient { @apply bg-clip-text text-transparent; background-image: var(--gradient-primary); }
+  .text-gradient-accent { @apply bg-clip-text text-transparent; background-image: var(--gradient-accent); }
+  .glass { @apply bg-card/60 backdrop-blur-md border border-border/40; }
 }
