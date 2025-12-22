@@ -70,7 +70,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border/50 text-center text-muted-foreground">
           <p className="flex items-center justify-center gap-2 flex-wrap">
-            © 2025 Sirjal Adhikari. Built with ♡ and passion for technology.
+            © 2025 Sirjal Adhikari.
           </p>
         </div>
       </div>
