@@ -16,12 +16,10 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Education", href: "#education" },
     { label: "Experience", href: "#experience" },
     { label: "Skills", href: "#skills" },
-    { label: "Services", href: "#services" },
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
   ];
@@ -37,24 +35,26 @@ const Navigation = () => {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass shadow-lg" : "bg-transparent"
+        isScrolled 
+          ? "bg-background/80 backdrop-blur-md border-b border-border/30" 
+          : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo - simple, understated */}
           <a 
             href="#home" 
-            className="text-2xl font-bold text-gradient"
+            className="text-lg font-medium text-foreground hover:text-foreground"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection("#home");
             }}
           >
-            SA
+            sirjal
           </a>
 
-          {/* Desktop Menu */}
+          {/* Desktop Menu - minimal spacing */}
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <a
@@ -64,7 +64,7 @@ const Navigation = () => {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors text-sm font-medium"
+                className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
               </a>
@@ -75,20 +75,20 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden text-muted-foreground hover:text-foreground hover:bg-transparent"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5" />
             )}
           </Button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - subtle */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 glass rounded-lg mt-2">
+          <div className="md:hidden py-4 border-t border-border/30">
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -97,7 +97,7 @@ const Navigation = () => {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="block px-4 py-3 hover:bg-primary/10 transition-colors"
+                className="block px-4 py-3 text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
               </a>
