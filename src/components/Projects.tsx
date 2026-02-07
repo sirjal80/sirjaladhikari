@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Gamepad2, Bot, Globe } from "lucide-react";
+import { ExternalLink, Github, Gamepad2, Bot, Globe, Calendar } from "lucide-react";
 
 const Projects = () => {
   const projects = [
@@ -57,16 +57,57 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 bg-gradient-to-b from-background to-card/20">
-      <div className="container max-w-6xl mx-auto">
-        <div className="text-center mb-12 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold">
-            Featured <span className="text-gradient">Projects</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my work in AI, game development, and web technologies
+    <section id="projects" className="py-24 px-6">
+      <div className="container max-w-4xl mx-auto">
+        {/* Section header */}
+        <div className="mb-16">
+          <p className="text-muted-foreground text-sm tracking-wide uppercase mb-3">
+            Projects
           </p>
+          <h2 className="text-foreground">
+            Things I've built
+          </h2>
         </div>
+
+        {/* Featured Project - HackDay Butwal */}
+        <Card className="p-8 mb-10 bg-card/60 border-border/40 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl" />
+          <div className="relative">
+            <div className="flex items-start gap-4 mb-5">
+              <div className="p-3 rounded-lg bg-accent/10">
+                <Calendar className="w-6 h-6 text-accent" />
+              </div>
+              <div>
+                <p className="text-xs text-accent font-medium uppercase tracking-wider mb-1">
+                  Featured · Event Leadership
+                </p>
+                <h3 className="text-xl font-semibold text-foreground">
+                  Event Lead at HackDay Butwal
+                </h3>
+              </div>
+            </div>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Led and organized HackDay Butwal, bringing together developers, designers, and innovators 
+              for a collaborative hackathon experience in the Butwal tech community.
+            </p>
+            <Button 
+              className="gap-2 bg-foreground text-background hover:bg-foreground/90"
+              asChild
+            >
+              <a 
+                href="https://butwal.devpost.com/?ref_feature=challenge&ref_medium=discover" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <ExternalLink className="w-4 h-4" />
+                View Event
+              </a>
+            </Button>
+          </div>
+        </Card>
+
+        {/* Other Projects */}
+        <p className="text-sm text-muted-foreground mb-6">Other projects</p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {projects.map((project, index) => (
