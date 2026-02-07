@@ -13,40 +13,37 @@ const Hero = () => {
       {/* Content */}
       <div className="container relative z-10 px-6 py-24">
         <div className="max-w-2xl mx-auto space-y-10">
-          {/* Profile Photo - slightly off-center for natural feel */}
+          {/* Profile Photo */}
           <div className="flex justify-center mb-6" style={{ marginLeft: '-8px' }}>
             <div className="relative">
               <img 
                 src="https://i.postimg.cc/13pr7hzb/temp-Image-P7non-E.avif" 
-                alt="Sirjal Adhikari" 
+                alt="Sirjal Adhikari - Developer and Event Lead from Nepal" 
                 className="w-32 h-32 rounded-full object-cover border-2 border-border/50 shadow-soft"
               />
               <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-accent/60 rounded-full" />
             </div>
           </div>
           
-          {/* Name and intro - editorial spacing */}
-          <div className="space-y-5 text-center">
-            <p className="text-muted-foreground text-sm tracking-wide uppercase">
-              Class 11 · Computer Science
-            </p>
+          {/* Name and intro - SEO optimized */}
+          <header className="space-y-5 text-center">
             <h1 className="text-foreground">
               Sirjal Adhikari
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-lg mx-auto" style={{ marginTop: '1.5rem' }}>
-              Student from Nepal, exploring AI, robotics, and game development. 
-              Building things that matter.
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-lg mx-auto">
+              Developer, event lead, and digital creator from Nepal. 
+              I build web experiences, organize tech events, and help businesses grow online.
             </p>
-          </div>
+          </header>
 
-          {/* CTAs - minimal, practical */}
-          <div className="flex flex-wrap gap-3 justify-center pt-2">
+          {/* CTAs */}
+          <nav className="flex flex-wrap gap-3 justify-center pt-2" aria-label="Primary actions">
             <Button 
               size="lg" 
               className="gap-2 bg-foreground text-background hover:bg-foreground/90 rounded-lg"
               asChild
             >
-              <a href="https://www.youtube.com/@sirjaladhikari" target="_blank" rel="noopener noreferrer">
+              <a href="#projects" aria-label="View my projects and work">
                 View Work 
                 <ArrowRight className="w-4 h-4" />
               </a>
@@ -57,7 +54,7 @@ const Hero = () => {
               className="gap-2 border-border/60 hover:bg-muted/50"
               asChild
             >
-              <a href="#contact">
+              <a href="#contact" aria-label="Contact me">
                 <Mail className="w-4 h-4" />
                 Contact
               </a>
@@ -68,20 +65,21 @@ const Hero = () => {
               className="gap-2 text-muted-foreground hover:text-foreground hover:bg-transparent"
               asChild
             >
-              <a href="#photos">
+              <a href="#photos" aria-label="View photo gallery">
                 <Camera className="w-4 h-4" />
                 Photos
               </a>
             </Button>
-          </div>
+          </nav>
 
-          {/* Social Links - restrained, subtle */}
-          <div className="flex gap-2 justify-center pt-6">
+          {/* Social Links */}
+          <nav className="flex gap-2 justify-center pt-6" aria-label="Social media links">
             <a 
               href="https://github.com/sirjal80" 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/40 transition-all"
+              aria-label="GitHub profile"
             >
               <Github className="w-5 h-5" />
             </a>
@@ -90,6 +88,7 @@ const Hero = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/40 transition-all"
+              aria-label="LinkedIn profile"
             >
               <Linkedin className="w-5 h-5" />
             </a>
@@ -98,10 +97,11 @@ const Hero = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/40 transition-all"
+              aria-label="Instagram profile"
             >
               <Instagram className="w-5 h-5" />
             </a>
-          </div>
+          </nav>
         </div>
       </div>
     </section>
