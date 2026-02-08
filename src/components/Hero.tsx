@@ -3,7 +3,7 @@ import { ArrowRight, Github, Linkedin, Instagram, Mail, Camera } from "lucide-re
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-start justify-center overflow-hidden noise-overlay pt-24 md:pt-28">
+    <section className="relative min-h-screen flex items-start justify-center overflow-hidden noise-overlay pt-20 md:pt-24">
       {/* Subtle gradient background orbs */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />
@@ -19,7 +19,7 @@ const Hero = () => {
               <img 
                 src="https://i.postimg.cc/13pr7hzb/temp-Image-P7non-E.avif" 
                 alt="Sirjal Adhikari - Developer and Event Lead from Nepal" 
-                className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-3 border-border/50 shadow-lg"
+                className="w-44 h-44 md:w-56 md:h-56 rounded-full object-cover border-3 border-border/50 shadow-lg"
               />
               <div className="absolute -bottom-2 -right-2 w-5 h-5 bg-accent/60 rounded-full" />
             </div>
