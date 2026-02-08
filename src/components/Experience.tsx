@@ -7,7 +7,6 @@ const Experience = () => {
       icon: Calendar,
       title: "Event Lead",
       organization: "HackDay Butwal",
-      period: "2024 – Present",
       description: "Leading the organization and execution of HackDay Butwal, a community hackathon bringing together developers and creators.",
       responsibilities: [
         "Planned and coordinated event logistics, venue setup, and scheduling for 100+ participants",
@@ -22,8 +21,7 @@ const Experience = () => {
     {
       icon: Trophy,
       title: "Winner",
-      organization: "Day Dream Butwal 2025 – Game Jam Globals",
-      period: "2025",
+      organization: "Day Dream Butwal",
       description: "Led a team to first place in a competitive game development hackathon, delivering a polished game within the time constraint.",
       skills: ["Unity", "Game Design", "Team Leadership", "C#"],
     },
@@ -31,7 +29,6 @@ const Experience = () => {
       icon: Users,
       title: "Participant",
       organization: "NASA Space Apps Challenge",
-      period: "2024",
       description: "Collaborated with a diverse team to build solutions for real-world space exploration challenges using web technologies.",
       skills: ["Problem Solving", "Collaboration", "Research", "Web Development"],
     },
@@ -39,7 +36,6 @@ const Experience = () => {
       icon: Mic,
       title: "AI Voice Assistant",
       organization: "Personal Project",
-      period: "2022",
       description: "Built a Python-based voice assistant with speech recognition and basic natural language processing capabilities.",
       skills: ["Python", "Speech Recognition", "AI/ML"],
     },
@@ -47,7 +43,6 @@ const Experience = () => {
       icon: Code,
       title: "Data Science Tools",
       organization: "Personal Projects",
-      period: "2023",
       description: "Created data analysis and visualization tools using Python for various practical use cases.",
       skills: ["Python", "Pandas", "Matplotlib", "Data Analysis"],
     },
@@ -55,7 +50,6 @@ const Experience = () => {
       icon: TrendingUp,
       title: "Freelance SEO Consultant",
       organization: "Local Businesses",
-      period: "2023 – Present",
       description: "Helping small businesses improve their online visibility through SEO audits, keyword optimization, and content strategy.",
       skills: ["SEO", "Digital Marketing", "Google Analytics", "Content Strategy"],
     },
@@ -101,7 +95,7 @@ const Experience = () => {
                         )}
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        {exp.organization} · {exp.period}
+                        {exp.organization}
                       </p>
                     </div>
                   </div>
