@@ -3,7 +3,7 @@ import { ArrowRight, Github, Linkedin, Instagram, Mail, Camera } from "lucide-re
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-start justify-center overflow-hidden noise-overlay pt-32 md:pt-40">
+    <section className="relative min-h-screen flex items-start justify-center overflow-hidden noise-overlay pt-24 md:pt-28">
       {/* Subtle gradient background orbs */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />
