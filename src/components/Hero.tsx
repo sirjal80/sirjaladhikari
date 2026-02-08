@@ -3,7 +3,7 @@ import { ArrowRight, Github, Linkedin, Instagram, Mail, Camera } from "lucide-re
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden noise-overlay">
+    <section className="relative min-h-screen flex items-start justify-center overflow-hidden noise-overlay pt-32 md:pt-40">
       {/* Subtle gradient background orbs */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />
@@ -11,17 +11,17 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 px-6 py-24">
-        <div className="max-w-2xl mx-auto space-y-10">
+      <div className="container relative z-10 px-6 py-12">
+        <div className="max-w-2xl mx-auto space-y-8">
           {/* Profile Photo */}
-          <div className="flex justify-center mb-6" style={{ marginLeft: '-8px' }}>
+          <div className="flex justify-center">
             <div className="relative">
               <img 
                 src="https://i.postimg.cc/13pr7hzb/temp-Image-P7non-E.avif" 
                 alt="Sirjal Adhikari - Developer and Event Lead from Nepal" 
-                className="w-32 h-32 rounded-full object-cover border-2 border-border/50 shadow-soft"
+                className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-3 border-border/50 shadow-lg"
               />
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-accent/60 rounded-full" />
+              <div className="absolute -bottom-2 -right-2 w-5 h-5 bg-accent/60 rounded-full" />
             </div>
           </div>
           
