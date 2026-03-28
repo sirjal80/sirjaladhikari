@@ -60,41 +60,44 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 px-4 bg-gradient-to-b from-card/20 to-background">
-      <div className="container max-w-6xl mx-auto">
-        <div className="text-center mb-12 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold">
-            Technical <span className="text-gradient">Skills</span>
+    <section id="skills" className="py-24 px-6" aria-label="Technical skills and expertise">
+      <div className="container max-w-4xl mx-auto">
+        <header className="mb-16">
+          <p className="text-muted-foreground text-sm tracking-wide uppercase mb-3">
+            Skills
+          </p>
+          <h2 className="text-foreground">
+            Technical Skills
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 max-w-xl">
             A diverse toolkit built through hands-on projects and continuous learning
           </p>
-        </div>
+        </header>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category, index) => (
             <Card 
               key={index} 
-              className="p-6 glass hover:card-glow transition-all group"
+              className="p-6 bg-card/60 border-border/40 hover:border-border/60 transition-all"
             >
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <category.icon className="w-5 h-5 text-primary" />
+                  <div className="p-2.5 rounded-lg bg-muted/50">
+                    <category.icon className="w-4 h-4 text-muted-foreground" />
                   </div>
-                  <h3 className="font-bold text-lg">{category.title}</h3>
+                  <h3 className="font-medium text-foreground">{category.title}</h3>
                 </div>
 
                 <div className="space-y-3">
                   {category.skills.map((skill, i) => (
                     <div key={i} className="space-y-1">
                       <div className="flex justify-between text-sm">
-                        <span>{skill.name}</span>
+                        <span className="text-foreground">{skill.name}</span>
                         <span className="text-muted-foreground">{skill.level}%</span>
                       </div>
-                      <div className="h-2 bg-muted rounded-full overflow-hidden">
+                      <div className="h-1.5 bg-muted rounded-full overflow-hidden" role="progressbar" aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100} aria-label={`${skill.name} proficiency`}>
                         <div 
-                          className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-1000"
+                          className="h-full bg-accent/60 rounded-full transition-all duration-1000"
                           style={{ width: `${skill.level}%` }}
                         />
                       </div>
@@ -107,13 +110,13 @@ const Skills = () => {
         </div>
 
         {/* Soft Skills */}
-        <div className="mt-12 text-center">
-          <h3 className="text-2xl font-bold mb-6">Soft Skills</h3>
-          <div className="flex flex-wrap gap-3 justify-center">
+        <div className="mt-12">
+          <h3 className="text-lg font-medium text-foreground mb-6">Soft Skills</h3>
+          <div className="flex flex-wrap gap-3">
             {["Teamwork", "Creativity", "Problem Solving", "Communication", "Research", "Leadership"].map((skill, i) => (
               <span 
                 key={i} 
-                className="px-6 py-3 glass rounded-full font-medium hover:bg-primary/20 transition-all"
+                className="px-4 py-2 text-sm bg-muted/50 text-muted-foreground rounded-lg border border-border/30"
               >
                 {skill}
               </span>
