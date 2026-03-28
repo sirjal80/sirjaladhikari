@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Globe, TrendingUp, Code2, ArrowRight } from "lucide-react";
+import { Globe, TrendingUp, Code2 } from "lucide-react";
 
 const Services = () => {
   const services = [
@@ -40,53 +39,47 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 px-4">
-      <div className="container max-w-6xl mx-auto">
-        <div className="text-center mb-12 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="text-gradient">Services</span>
+    <section id="services" className="py-24 px-6" aria-label="Services offered">
+      <div className="container max-w-4xl mx-auto">
+        <header className="mb-16">
+          <p className="text-muted-foreground text-sm tracking-wide uppercase mb-3">
+            Services
+          </p>
+          <h2 className="text-foreground">
+            What I Offer
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 max-w-xl">
             Leveraging technology to solve real-world problems
           </p>
-        </div>
+        </header>
 
         <div className="grid md:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="p-6 glass hover:card-glow transition-all group"
-            >
-              <div className="space-y-6">
-                <div className="p-4 rounded-xl bg-primary/10 w-fit group-hover:bg-primary/20 transition-colors">
-                  <service.icon className="w-8 h-8 text-primary" />
+            <article key={index}>
+              <Card className="p-6 bg-card/60 border-border/40 hover:border-border/60 transition-all h-full">
+                <div className="space-y-5">
+                  <div className="p-2.5 rounded-lg bg-muted/50 w-fit">
+                    <service.icon className="w-5 h-5 text-muted-foreground" />
+                  </div>
+
+                  <div className="space-y-2">
+                    <h3 className="font-semibold text-foreground">{service.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+
+                  <ul className="space-y-2">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <span className="w-1 h-1 rounded-full bg-accent/60 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <div className="space-y-3">
-                  <h3 className="text-2xl font-bold">{service.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-
-                <ul className="space-y-2">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Button 
-                  variant="outline" 
-                  className="w-full gap-2 group-hover:bg-primary/10"
-                >
-                  Learn More
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </div>
-            </Card>
+              </Card>
+            </article>
           ))}
         </div>
       </div>

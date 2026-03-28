@@ -27,81 +27,89 @@ import codingOlympiadAwards from "@/assets/photos/coding-olympiad-awards.jpg";
 import nasaSpaceAppsSetup from "@/assets/photos/nasa-space-apps-setup.jpg";
 
 const Photos = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
 
   const photos = [
-    { src: telescopeClassroom, alt: "Telescope Observation in Classroom" },
-    { src: nasaSpaceApps, alt: "NASA Space Apps Challenge Participant Badge" },
-    { src: daydreamButwal, alt: "DayDream Butwal 2025 Event Badge" },
-    { src: telescopeOutdoor, alt: "Stargazing with Telescope" },
-    { src: friendsGroup, alt: "Friends and Teammates" },
-    { src: codingOlympiad, alt: "Inter School Coding Olympiad Medal - Rupandehi District" },
-    { src: certificate1, alt: "New Horizon English Boarding Certificate" },
-    { src: certificate2, alt: "Great Learning Certificate of Completion" },
-    { src: certificate3, alt: "Certificate of Completion" },
-    { src: certificate4, alt: "Certificate of Completion" },
-    { src: certificate5, alt: "Certificate of Completion" },
-    { src: cProgrammingCert, alt: "C Programming Basics Certificate" },
-    { src: seoCertificate, alt: "SEO Fundamentals Training Certificate" },
-    { src: simplemAiCert, alt: "SIMPLEM AI Innovation Challenge Certificate" },
-    { src: introSeoCert, alt: "Introduction to SEO Certificate - SimpliLearn" },
-    { src: pythonBeginnersCert, alt: "Python for Beginners Certificate - Great Learning" },
-    { src: simplilearnCompletionCert, alt: "Certificate of Completion - SimpliLearn SkillUP" },
-    { src: ictClubHorizonsCert, alt: "ICT Club of Horizons Coding Olympiad Certificate" },
-    { src: awardCeremonyReceiving, alt: "Award Ceremony - Receiving Recognition" },
-    { src: awardCeremonyTeam, alt: "Award Ceremony - Team Photo with Trophy" },
-    { src: codingOlympiadAwards, alt: "District Level Coding Olympiad Winner - Certificates and Awards" },
-    { src: nasaSpaceAppsSetup, alt: "NASA Space Apps Challenge Setup with Telescope" },
+    { src: telescopeClassroom, alt: "Sirjal Adhikari observing through telescope in classroom" },
+    { src: nasaSpaceApps, alt: "NASA Space Apps Challenge 2024 participant badge - Sirjal Adhikari" },
+    { src: daydreamButwal, alt: "DayDream Butwal hackathon event badge" },
+    { src: telescopeOutdoor, alt: "Stargazing session with telescope outdoors in Nepal" },
+    { src: friendsGroup, alt: "Sirjal Adhikari with teammates at tech event" },
+    { src: codingOlympiad, alt: "Inter School Coding Olympiad medal winner - Rupandehi District" },
+    { src: certificate1, alt: "New Horizon English Boarding School achievement certificate" },
+    { src: certificate2, alt: "Great Learning online course completion certificate" },
+    { src: certificate3, alt: "Technical course completion certificate" },
+    { src: certificate4, alt: "Programming course completion certificate" },
+    { src: certificate5, alt: "Online learning completion certificate" },
+    { src: cProgrammingCert, alt: "C Programming Basics certification from online learning platform" },
+    { src: seoCertificate, alt: "SEO Fundamentals training certificate - digital marketing" },
+    { src: simplemAiCert, alt: "SIMPLEM AI Innovation Challenge participation certificate" },
+    { src: introSeoCert, alt: "Introduction to SEO certificate from SimpliLearn" },
+    { src: pythonBeginnersCert, alt: "Python for Beginners certificate from Great Learning" },
+    { src: simplilearnCompletionCert, alt: "SimpliLearn SkillUP course completion certificate" },
+    { src: ictClubHorizonsCert, alt: "ICT Club of Horizons Coding Olympiad participation certificate" },
+    { src: awardCeremonyReceiving, alt: "Sirjal Adhikari receiving award at ceremony" },
+    { src: awardCeremonyTeam, alt: "Team photo with trophy at award ceremony" },
+    { src: codingOlympiadAwards, alt: "District Level Coding Olympiad winner certificates and awards display" },
+    { src: nasaSpaceAppsSetup, alt: "NASA Space Apps Challenge workspace setup with telescope" },
   ];
 
   return (
-    <section id="photos" className="py-20 px-4 bg-gradient-to-b from-card/20 to-background">
-      <div className="container max-w-7xl mx-auto">
-        <div className="text-center mb-12 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="text-gradient">Photos</span> & Achievements
+    <section id="photos" className="py-24 px-6" aria-label="Photo gallery and achievements">
+      <div className="container max-w-4xl mx-auto">
+        <header className="mb-16">
+          <p className="text-muted-foreground text-sm tracking-wide uppercase mb-3">
+            Gallery
+          </p>
+          <h2 className="text-foreground">
+            Photos & Achievements
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 max-w-xl">
             Moments from competitions, events, and learning milestones
           </p>
-        </div>
+        </header>
 
-        {/* Photo Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {photos.map((photo, index) => (
             <button
               key={index}
-              onClick={() => setSelectedImage(photo.src)}
-              className="group relative aspect-square overflow-hidden rounded-xl glass border border-border/50 hover:border-primary/50 transition-all hover:card-glow"
+              onClick={() => setSelectedImage(photo)}
+              className="group relative aspect-square overflow-hidden rounded-lg border border-border/30 hover:border-border/60 transition-all"
+              aria-label={`View larger: ${photo.alt}`}
             >
               <img
                 src={photo.src}
                 alt={photo.alt}
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                loading="lazy"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity" />
             </button>
           ))}
         </div>
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background/95 backdrop-blur-xl border-border/50">
           <button
             onClick={() => setSelectedImage(null)}
-            className="absolute top-4 right-4 z-50 p-2 rounded-full glass hover:bg-destructive/20 transition-colors"
+            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-muted/50 hover:bg-muted transition-colors"
+            aria-label="Close image viewer"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
           {selectedImage && (
-            <div className="flex items-center justify-center p-4">
+            <figure className="flex flex-col items-center justify-center p-4">
               <img
-                src={selectedImage}
-                alt="Enlarged view"
-                className="max-w-full max-h-[90vh] object-contain rounded-lg animate-fade-in"
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="max-w-full max-h-[85vh] object-contain rounded-lg"
               />
-            </div>
+              <figcaption className="mt-3 text-sm text-muted-foreground text-center max-w-md">
+                {selectedImage.alt}
+              </figcaption>
+            </figure>
           )}
         </DialogContent>
       </Dialog>

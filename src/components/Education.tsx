@@ -22,54 +22,52 @@ const Education = () => {
   ];
 
   return (
-    <section id="education" className="py-20 px-4 bg-gradient-to-b from-background to-card/20">
-      <div className="container max-w-6xl mx-auto">
-        <div className="text-center mb-12 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="text-gradient">Education</span>
+    <section id="education" className="py-24 px-6" aria-label="Education and academic background">
+      <div className="container max-w-4xl mx-auto">
+        <header className="mb-16">
+          <p className="text-muted-foreground text-sm tracking-wide uppercase mb-3">
+            Education
+          </p>
+          <h2 className="text-foreground">
+            Academic Background
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 max-w-xl">
             My academic journey and commitment to continuous learning
           </p>
-        </div>
+        </header>
 
         <div className="space-y-6">
           {education.map((item, index) => (
-            <Card 
-              key={index} 
-              className={`p-6 md:p-8 glass hover:card-glow transition-all ${
-                item.current ? 'border-primary/50' : ''
-              }`}
-            >
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="flex-shrink-0">
-                  <div className={`p-4 rounded-lg ${
-                    item.current ? 'bg-primary/20' : 'bg-muted'
-                  } w-fit`}>
+            <article key={index}>
+              <Card 
+                className={`p-6 bg-card/60 border-border/40 hover:border-border/60 transition-all ${
+                  item.current ? 'ring-1 ring-accent/20' : ''
+                }`}
+              >
+                <div className="flex items-start gap-4">
+                  <div className={`p-2.5 rounded-lg ${item.current ? 'bg-accent/10' : 'bg-muted/50'}`}>
                     {item.current ? (
-                      <BookOpen className="w-8 h-8 text-primary" />
+                      <BookOpen className={`w-5 h-5 ${item.current ? 'text-accent' : 'text-muted-foreground'}`} />
                     ) : (
-                      <GraduationCap className="w-8 h-8 text-muted-foreground" />
+                      <GraduationCap className="w-5 h-5 text-muted-foreground" />
                     )}
                   </div>
-                </div>
-
-                <div className="flex-1 space-y-3">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="text-sm font-medium text-primary">{item.year}</span>
-                    {item.current && (
-                      <span className="px-3 py-1 text-xs font-medium bg-primary/20 text-primary rounded-full">
-                        Current
-                      </span>
-                    )}
+                  <div className="flex-1 space-y-2">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <h3 className="font-semibold text-foreground">{item.title}</h3>
+                      {item.current && (
+                        <span className="text-xs px-2 py-0.5 bg-accent/10 text-accent rounded-full">
+                          Current
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-muted-foreground">{item.institution}</p>
+                    <p className="text-xs text-muted-foreground">{item.location}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-2">{item.description}</p>
                   </div>
-                  <h3 className="text-2xl font-bold">{item.title}</h3>
-                  <p className="text-lg font-medium text-muted-foreground">{item.institution}</p>
-                  <p className="text-sm text-muted-foreground">{item.location}</p>
-                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </article>
           ))}
         </div>
       </div>
